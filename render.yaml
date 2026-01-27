@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: chatify-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGO_URI
+        fromConfigVar: MONGO_URI
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CLIENT_URL
+        placeholder: "The URL of your frontend (e.g., https://chatify.onrender.com)"
+      - key: RESEND_API_KEY
+        fromConfigVar: RESEND_API_KEY
+      - key: EMAIL_FROM
+        placeholder: "your-email@example.com"
+      - key: EMAIL_FROM_NAME
+        value: "Chatify"
+      - key: CLOUDINARY_CLOUD_NAME
+        fromConfigVar: CLOUDINARY_CLOUD_NAME
+      - key: CLOUDINARY_API_KEY
+        fromConfigVar: CLOUDINARY_API_KEY
+      - key: CLOUDINARY_API_SECRET
+        fromConfigVar: CLOUDINARY_API_SECRET
+      - key: ARCJET_KEY
+        fromConfigVar: ARCJET_KEY
+      - key: ARCJET_ENV
+        value: production
